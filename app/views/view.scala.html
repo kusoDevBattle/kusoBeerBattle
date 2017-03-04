@@ -1,0 +1,14 @@
+@(scores: List[(Int, Int, Int)])
+
+@main("test") {
+
+
+<table>
+  <tr><th>beer</th><th>awa</th><th>score</th></tr>
+  @for(score <- scores) {
+  <tr><td>@score._1</td><td>@score._2</td><td>@score._3</td></tr>
+  }
+</table>
+
+
+}
