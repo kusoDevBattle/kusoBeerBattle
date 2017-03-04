@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const awaElm = document.getElementById("beer-awa");
 
   const scoreElm = document.getElementById("score");
+  const rankElm = document.getElementById("rank");
 
   const render = () => {
     beerElm.style.height = `${Manager.beer}px`;
@@ -74,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function() {
       request(
         {
           method: "POST",
-          uri: "http://ec2-54-201-69-26.us-west-2.compute.amazonaws.com:9000/input",
+          uri: "./input",
           body: JSON.stringify({
             beer: beer,
             awa: awa
@@ -82,9 +83,10 @@ document.addEventListener("DOMContentLoaded", function() {
           json: true
         },
         function() {
-        
-      });
-      scoreElm.textContent = `${awa} : ${beer} : ${awa + beer}`;
+          rankElm.firstElementChild.contentWindow.location.reload();
+        }
+      );
+      scoreElm.textContent = `${beer} : ${awa} : ${awa + beer}`;
     }
   });
 });

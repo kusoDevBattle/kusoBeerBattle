@@ -4,10 +4,29 @@
 
     @message
 
-    <form action="./input" method="post">
-    <input name="beer" type="text">
-    <input name="awa" type="text">
-    <input type="submit">
-    </form>
+        <div class="container-fluid">
+      <div class="col-md-12">
+        <div class="page-header">
+          <h1>kusoBeerBattle</h1>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="form" style="margin-bottom: 20px">
+          <button id="start" class="btn btn-info btn-lg">Start</button>
+          <button id="stop" class="btn btn-danger btn-lg">Stop</button>
+          <label>スコア(ビール : 泡 : 合計量) : </label><span id="score"></span>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div id="jug" class="col-md-3" style="height: 1000px; border: 1px solid #dddddd; padding: 0;">
+          <div id="beer-awa" class="col-md-12" style="background-color: #e8e8e8; position: absolute;"></div>
+          <div id="beer-base" class="col-md-12" style="background-color: #ffdd00; position: absolute; bottom: 0;"></div>
+        </div>
+        <div id="rank" class="col-md-9" style="height: 1000px;">
+          <iframe src="./rank_view" style="width: 100%; height: 100%;"></iframe>
+        </div>
+      </div>
+      <script src="./assets/javascripts/beer.js"></script>
+
 
 }
