@@ -1,3 +1,4 @@
+import findScore from "./findScore";
 const request = require("browser-request");
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -83,10 +84,14 @@ document.addEventListener("DOMContentLoaded", function() {
           json: true
         },
         function() {
-          rankElm.firstElementChild.contentWindow.location.reload();
+          let frame = rankElm.firstElementChild
+          frame.contentWindow.location.reload();
+          setTimeout(function() {
+            findScore(frame.contentWindow.document.getElementsByTagName("table")[0].tBodies[0], awa, beer);
+          }, 1000);
         }
       );
-      scoreElm.textContent = `${beer} : ${awa} : ${awa + beer}`;
+      scoreElm.textContent = `${beer} mL : ${awa} mL`;
     }
   });
 });

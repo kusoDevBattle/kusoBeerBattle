@@ -39,7 +39,6 @@ object Application extends Controller {
         'beer -> result.beer,
         'awa -> result.awa,
         'score -> score).executeInsert()
-      println("exec!")
     }
 
     Ok(views.html.index(result.toString))
@@ -47,7 +46,7 @@ object Application extends Controller {
 
   def rank_view = Action { implicit request =>
     val result = DB.withConnection { implicit c =>
-      SQL("select * from beer order by 'score'").as( int("beer") ~ int("awa") ~int("score") map(flatten) * )
+      SQL("select * from beer order by score desc").as( int("beer") ~ int("awa") ~int("score") map(flatten) * )
     }
 
     Ok(views.html.view(result))
